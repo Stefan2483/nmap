@@ -1,0 +1,25 @@
+# Evading IDS or firewalls techniques:
+
+#Packet fragmentation:
+ nmap -sS -T4 -A -f -v [target IP]  # -sS (scanStealth or scanSYN) -T timeout 4 -A aggressive -f fragment packet
+ 
+#Source Routing:
+
+
+#Source Port manipulation:
+ nmap -g 80 [target IP] or nmap --source-port 80 [target IP]   # scan through allowed port 80
+ 
+#IP Address decoy - spoof ip from 10 random generated IPs
+ nmap -D RND:10 [target IP]   # -D (Decoy) RND random  10 IPs
+ 
+#IP Address spoofing - changing source IP addresses
+ hping3 [target IP] -a [spoof ip]  # hping3 tool from parrot os 
+ 
+#Creating custom packets
+ nmap [target IP] --data 0xdeadbeef  # (sending binary data)
+ 
+#Sending bad checksums:
+ nmap --badsum [target IP]
+ 
+#Randomizing Host Order
+ nmap --randomsize-host [target IP]
